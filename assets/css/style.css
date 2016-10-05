@@ -3,10 +3,6 @@ body {
 	background-size: 100% 100%;
 }
 
-.container {
-	background-image: url("../images/theme1.jpg");
-}
-
 #gamePic {
 	max-height: 100%;
 	max-width: 100%;
