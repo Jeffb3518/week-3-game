@@ -50,7 +50,7 @@
 	var wordOptions = ['slater', 'kelly', 'zack', 'screech', 'jessie', 'mr.belding'];
 	var randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
 	var guesses = 12;
-	var incorrectLetters = [];
+	var wrongLetters = [];
 
 	document.querySelector("#numWins").innerHTML = wins;
 
@@ -86,19 +86,19 @@
 			characterNameHTML = characterName.join(" ");
 			document.querySelector("#characterName").innerHTML = characterNameHTML.toUpperCase();		
 		}
-		else if (incorrectLetters.indexOf(userGuess) >= 0) {
+		else if (wrongLetters.indexOf(userGuess) >= 0) {
 			console.log("Guessed Already!");
 		}
 		else {
 			guesses--;
 			document.querySelector("#guessesLeft").innerHTML = guesses;
 
-			incorrectLetters.push(userGuess);
-			incorrectLettersHTML = incorrectLetters.join(" ");
-			document.querySelector("#incorrectLetters").innerHTML = incorrectLettersHTML.toUpperCase();
+			wrongLetters.push(userGuess);
+			wrongLettersHTML = wrongLetters.join(" ");
+			document.querySelector("#wrongLetters").innerHTML = wrongLettersHTML.toUpperCase();
 
 			console.log("Wrong");
-			console.log(incorrectLetters);
+			console.log(wrongLetters);
 		}
 	}
 </script>
