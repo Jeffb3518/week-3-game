@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Hangman-Saved By The Bell Style</title>
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>
+		<div class="jumbotron">
+  <h1>Saved By The Bell!</h1>
+  <div class="name">
+  <p>Hangman Game</p>
+ </div>
+</div>	
+	</header>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-4 panel panel-default">
+				<img id="gamePic" src="images/SavedbytheBell.jpg" alt="">
+			</div>
+			<div class="col-sm-4 panel panel-default">
+				<p>Press Any Key to Get Started!</p>
+				<p>Wins</p>
+				<p id="numWins"></p>
+				<p>Character Name</p>
+				<p id="characterName"></p>
+				<p>Guesses Remaining</p>
+				<p id="guessesLeft"></p>
+				<p>Letters Guessed</p>
+				<p id="incorrectLetters"></p>
+			</div>
+			<div class="col-sm-2">
+			</div>
+		</div>
+	</div>
+
+</body>
+<script>
+	var wins = 0;
+	var wordOptions = ['slater', 'kelly', 'zack', 'screech', 'jessie', 'mr.belding'];
+	var randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+	var guesses = 12;
+	var incorrectLetters = [];
+
+	document.querySelector("#numWins").innerHTML = wins;
+
+	var characterName = [];
+
+	for (var i = 0; i < randomWord.length; i++) {
+		if (randomWord[i] === " ") {
+			characterName.push("&nbsp;");
+		}
+		else  {
+			characterName.push("_");
+		}
+	}
+
+	console.log(randomWord);
+	console.log(characterName);
+
+	characterNameHTML = characterName.join(" ");
+
+	document.querySelector("#characterName").innerHTML = characterNameHTML;
+	document.querySelector("#guessesLeft").innerHTML = guesses;
+
+	document.onkeyup = function(event) {
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+		if (randomWord.indexOf(userGuess) >= 0) {
+			console.log("Correct");
+			for (var i = 0; i < randomWord.length; i++) {
+				if (randomWord[i] === userGuess) {
+					characterName[i] = userGuess;
+				}
+			}
+			characterNameHTML = characterName.join(" ");
+			document.querySelector("#characterName").innerHTML = characterNameHTML.toUpperCase();		
+		}
+		else if (incorrectLetters.indexOf(userGuess) >= 0) {
+			console.log("Guessed Already!");
+		}
+		else {
+			guesses--;
+			document.querySelector("#guessesLeft").innerHTML = guesses;
+
+			incorrectLetters.push(userGuess);
+			incorrectLettersHTML = incorrectLetters.join(" ");
+			document.querySelector("#incorrectLetters").innerHTML = incorrectLettersHTML.toUpperCase();
+
+			console.log("Wrong");
+			console.log(incorrectLetters);
+		}
+	}
+</script>
+</html>
