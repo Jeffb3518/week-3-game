@@ -6,6 +6,7 @@ body {
 #gamePic {
 	max-height: 100%;
 	max-width: 100%;
+	padding: 0px;
 }
 
 header {
@@ -20,8 +21,10 @@ header {
 
 h1 {
 	background-color: orange;
+	font-family: 'Roboto', sans-serif;
 }
 
 .name {
 	background-color: orange;
+	font-family: 'Roboto', sans-serif;
 }

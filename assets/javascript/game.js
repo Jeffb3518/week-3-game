@@ -1,4 +1,4 @@
-var wins = 0;
+	var wins = 0;
 	var wordOptions = ['slater', 'kelly', 'zack', 'screech', 'jessie', 'mr.belding'];
 	var randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
 	var guesses = 12;
