@@ -1,6 +1,6 @@
 	var wins = 0;
-	var wordOptions = ['slater', 'kelly', 'zack', 'screech', 'jessie', 'mr.belding'];
-	var randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+	var gameWords = ['slater', 'kelly', 'zack', 'screech', 'jessie', 'mr.belding'];
+	var randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
 	var guesses = 12;
 	var wrongLetters = [];
 	document.querySelector("#totalWins").innerHTML = wins;
